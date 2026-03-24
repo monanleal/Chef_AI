@@ -21,5 +21,5 @@ export const perguntarReceita = async (req, res) => {
         })
     }
 
-
 }
+

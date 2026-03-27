@@ -1,11 +1,11 @@
-
+import ChatReceitas from "./pages/ChatReceitas"
 
 function App() {
 
   return (
-    <>
-      <div>Olá receitas</div>
-    </>
+    <div className="min-h-screen bg-gray-100">
+      <ChatReceitas />
+    </div>
   )
 }
 

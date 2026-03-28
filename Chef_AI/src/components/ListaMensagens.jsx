@@ -26,15 +26,14 @@
 //     )
 // }
 
-
+import Mensagem from "./Mensagem";
 
 
 const ListaMensagens = ({ mensagens }) => {
     return (
-        <div>
-            <h1>Lista</h1>
+        <div className="flex-1 p-4 overflow-y-auto space-y-4">
             {mensagens.map((mensagem) => (
-                <p key={mensagem.id}>{mensagem.text}</p>
+                <Mensagem key={mensagem.id} mensagem={mensagem} />
             ))}
         </div>
     )

@@ -2,13 +2,13 @@ import { useState } from "react";
 
 
 const ChatBox = ({onEnviarMensagem, desabilitado}) => {
-const [mensagem, setMensagem] = useState("");
+const [mensagem, setMensagem] = useState('');
 
 const handleSubmit = (event) => {
     event.preventDefault();
 
     onEnviarMensagem(mensagem);
-    setMensagem("");
+    setMensagem('');
 
 }
 

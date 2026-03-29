@@ -1,6 +1,7 @@
 import { useState } from "react";
 import ListaMensagens from "../components/ListaMensagens";
 import ChatBox from "../components/ChatBox";
+import { api } from '../services/api';
 
 const ChatReceitas = () => {
     const [loading, setLoading] = useState(false);
@@ -14,7 +15,32 @@ const ChatReceitas = () => {
 
  
     const onEnviarMensagem = async (mensagem) => {
-        
+        const novaMensagemUsuario = {
+            id: Date.now(),
+            text: mensagem,
+            sender: "usuario"
+        }
+
+        setMensagens( prev => [...prev, novaMensagemUsuario] );
+        setLoading(true);
+
+            try {
+                const resposta = await api(mensagem)
+
+                const novaMensagemBot = {
+                    id: Date.now() + 1,
+                    text: resposta,
+                    sender: "bot"
+                }
+
+                setMensagens( prev => [...prev, novaMensagemBot] );
+
+            } catch (err) {
+                console.error("Erro ao enviar mensagem:", err);
+                
+            } finally {
+                setLoading(false);
+            }
         };
 
 

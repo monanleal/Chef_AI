@@ -37,7 +37,12 @@ const ChatReceitas = () => {
 
             } catch (err) {
                 console.error("Erro ao enviar mensagem:", err);
-                
+                const novaMensagem = {
+                id: Date.now(),
+                text: "Falha ao enviar, tente novamente.",             
+                sender: "bot"
+        } 
+                setMensagens( prev => [...prev, novaMensagem] );
             } finally {
                 setLoading(false);
             }
@@ -48,12 +53,12 @@ const ChatReceitas = () => {
         <div className="min-h-screen bg-gradient-to-br from-blue-400 via-gray-50 to-emerald-50 p-4">
             <div className="container mx-auto max-w-4xl">
                 <header className="text-center mb-8">
-                    <h1 className="text-5xl font-bold bg-gradient-to-r from-blue-600 to-emerald-600 text-transparent bg-clip-text mb-2">Chef AI</h1>
-                    <p className="text-gray-600 text-lg">Seja bom-vindo ao Chef AI</p>
+                    <h1 className="text-5xl font-bold bg-gradient-to-r from-blue-600 to-emerald-600 text-transparent bg-clip-text mb-2">🍳 Chef AI</h1>
+                    <p className="text-gray-600 text-lg">Seu assistente pessoal para receitas deliciosas</p>
                 </header>
 
                 <div className="bg-white/70 backdrop-blur-sm rounded-2xl overflow-hidden shadow-xl h-[520px] border border-gray-100 flex flex-col">
-                    <ListaMensagens mensagens={mensagens}/>
+                    <ListaMensagens mensagens={mensagens} loading={loading} />
                     <ChatBox onEnviarMensagem={onEnviarMensagem} desabilitado={loading}/>
                 </div>
             </div>

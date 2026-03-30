@@ -1,7 +1,4 @@
-
-
-
-const Mensagem = ({ mensagem }) => {
+const Mensagem = ({ mensagem, loading }) => {
     const isBot = mensagem.sender === 'bot';
 
     return (
